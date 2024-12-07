@@ -1,7 +1,7 @@
 import { IoGameControllerOutline } from "react-icons/io5";
+import Genre from "./ui/Genre";
 
 import classes from "./Header.module.css";
-import Genre from "./ui/Genre";
 
 const Header = () => {
   return (

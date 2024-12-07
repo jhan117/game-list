@@ -9,6 +9,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  position: relative;
 }
 
 .gifContainer {
@@ -35,6 +37,15 @@
 .gifContainer a:hover img {
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
+}
+
+.secretImg {
+  display: block;
+  width: 4rem;
+  position: absolute;
+
+  top: -3.8rem;
+  z-index: -1;
 }
 
 /* tablet min 600px */

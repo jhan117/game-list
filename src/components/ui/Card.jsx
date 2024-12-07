@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import getGifData from "../../utils/getGifData";
 
 import classes from "./Card.module.css";
@@ -43,6 +43,13 @@ const Card = ({ data }) => {
 
   return (
     <div className={classes.card}>
+      {name === "Valorant" && (
+        <img
+          className={classes.secretImg}
+          alt="my cute baby"
+          src="https://github.com/user-attachments/assets/2068d8ef-35c8-475c-83d2-4fec39e23aa1"
+        />
+      )}
       <div className={classes.gifContainer}>
         <a
           href={website}
