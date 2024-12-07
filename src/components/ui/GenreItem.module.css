@@ -1,0 +1,17 @@
+.genreItem {
+  border: 1px solid var(--font-color);
+  border-radius: 0.6rem;
+
+  padding: 0.2rem 0.8rem;
+}
+
+.genreItem:hover {
+  background-color: #dddddd30;
+  cursor: pointer;
+}
+
+.onBtn {
+  background-color: var(--font-color);
+  color: var(--background);
+  pointer-events: none;
+}

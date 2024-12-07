@@ -3,42 +3,43 @@ import getGifData from "../../utils/getGifData";
 
 import classes from "./Card.module.css";
 
-const Card = (props) => {
+const fetchGif = async (postId) => {
+  if (!postId) return null;
+
+  try {
+    const apiKey = process.env.REACT_APP_TENOR_API_KEY;
+    const response = await fetch(
+      `https://tenor.googleapis.com/v2/posts?ids=${postId}&key=${apiKey}`
+    );
+    const data = await response.json();
+
+    if (data.results && data.results.length > 0) {
+      return data.results[0].media_formats.gif.url;
+    }
+  } catch (error) {
+    console.error("Error fetching GIF:", error);
+  }
+  return null;
+};
+
+const Card = ({ data }) => {
+  const { name, developer, genre, releaseDate, website } = data;
   const [gifUrl, setGifUrl] = useState("");
   const [loading, setLoading] = useState(true);
   const [hovered, setHovered] = useState(false);
 
-  const { name, developer, genre, releaseDate, website } = props.data;
   const gifData = getGifData(name.toLowerCase());
 
-  const hoverClass = name.charAt(0).toLowerCase();
-
-  const fetchGif = async () => {
-    if (!gifData.postId) {
-      setLoading(false);
-      return;
-    }
-
-    try {
-      const apiKey = process.env.REACT_APP_TENOR_API_KEY;
-      const response = await fetch(
-        `https://tenor.googleapis.com/v2/posts?ids=${gifData.postId}&key=${apiKey}`
-      );
-      const data = await response.json();
-
-      if (data.results && data.results.length > 0) {
-        setGifUrl(data.results[0].media_formats.gif.url);
-      }
-    } catch (error) {
-      console.error("Error fetching GIF:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    fetchGif();
-  }, []);
+    const fetchData = async () => {
+      setLoading(true);
+      const gif = await fetchGif(gifData.postId);
+      setGifUrl(gif);
+      setLoading(false);
+    };
+
+    fetchData();
+  }, [name, gifData.postId]);
 
   return (
     <div className={classes.card}>
@@ -47,7 +48,6 @@ const Card = (props) => {
           href={website}
           target="_blank"
           rel="noreferrer"
-          className={classes[hoverClass]}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
         >

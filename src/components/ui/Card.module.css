@@ -8,7 +8,7 @@
 
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
+  justify-content: space-between;
 }
 
 .gifContainer {
@@ -40,13 +40,13 @@
 /* tablet min 600px */
 @media only screen and (min-width: 37.5rem) {
   .gameName {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 }
 
 /* desktop min 1000px */
 @media only screen and (min-width: 62.5rem) {
-  .gameName {
-    font-size: 4rem;
+  .card {
+    max-width: 38rem;
   }
 }
