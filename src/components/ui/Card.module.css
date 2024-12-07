@@ -1,0 +1,52 @@
+.card {
+  width: 100%;
+
+  border: 1px solid white;
+  border-radius: 1rem;
+
+  padding: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.gifContainer {
+  position: relative;
+  width: 100%;
+}
+
+.gameName {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2.6rem;
+  font-weight: bold;
+  text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.gifContainer a:hover .gameName {
+  opacity: 0;
+}
+
+.gifContainer a:hover img {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* tablet min 600px */
+@media only screen and (min-width: 37.5rem) {
+  .gameName {
+    font-size: 4rem;
+  }
+}
+
+/* desktop min 1000px */
+@media only screen and (min-width: 62.5rem) {
+  .gameName {
+    font-size: 4rem;
+  }
+}
