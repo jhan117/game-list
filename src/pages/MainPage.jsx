@@ -10,19 +10,24 @@ import classes from "./MainPage.module.css";
 
 const MainPage = () => {
   const [filteredGames, setFilteredGames] = useState(gamesData);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const genre = searchParams.get("genre");
 
-    if (genre === "all" || !genre) {
+    if (!genre) {
+      setSearchParams({ genre: "all" });
+      return;
+    }
+
+    if (genre === "all") {
       setFilteredGames(gamesData);
     } else {
       setFilteredGames(
         gamesData.filter((game) => game.mGenre.toLowerCase() === genre)
       );
     }
-  }, [searchParams]);
+  }, [searchParams, setSearchParams]);
 
   return (
     <>
