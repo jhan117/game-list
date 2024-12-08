@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa6";
 
-import getGifData from "../../utils/getGifData";
-
 import classes from "./Card.module.css";
 
 const fetchGif = async (postId) => {
@@ -34,12 +32,11 @@ const Card = ({ data, isFirst }) => {
     website,
     interestLevel,
     reasonForInterest,
+    gifData,
   } = data;
   const [gifUrl, setGifUrl] = useState("");
   const [loading, setLoading] = useState(true);
   const [hovered, setHovered] = useState(false);
-
-  const gifData = getGifData(name.toLowerCase());
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,7 +47,7 @@ const Card = ({ data, isFirst }) => {
     };
 
     fetchData();
-  }, [name, gifData.postId]);
+  }, [gifData.postId]);
 
   return (
     <div className={classes.card}>
@@ -70,7 +67,7 @@ const Card = ({ data, isFirst }) => {
           onMouseLeave={() => setHovered(false)}
         >
           {loading ? (
-            <p>Loading GIF...</p>
+            <p>GIF 로딩중...</p>
           ) : gifUrl ? (
             <>
               <img
@@ -81,7 +78,7 @@ const Card = ({ data, isFirst }) => {
               <p className={classes.gameName}>{name}</p>
             </>
           ) : (
-            <p>No GIF available for this game.</p>
+            <p>GIF 없음</p>
           )}
         </a>
       </div>
