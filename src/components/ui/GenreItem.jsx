@@ -14,15 +14,13 @@ const GenreItem = (props) => {
   };
 
   return (
-    <li>
-      <button
-        className={`${classes.genreItem} ${
-          filter === genre.toLowerCase() && classes.onBtn
-        }`}
-        onClick={changeGenreHandler}
-      >
-        {genre}
-      </button>
+    <li
+      className={`${classes.genreItem} ${
+        filter === genre.toLowerCase() && classes.onBtn
+      }`}
+      onClick={changeGenreHandler}
+    >
+      {genre}
     </li>
   );
 };
