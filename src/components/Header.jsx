@@ -15,7 +15,8 @@ const Header = () => {
       </div>
       <div className={classes.content}>
         <p className={classes.info}>
-          *상단 아이콘을 클릭하면 야간 모드로 전환됩니다.
+          *상단 아이콘을 클릭하면 {isDarkMode ? "주간" : "야간"} 모드로
+          전환됩니다.
         </p>
         <div>
           <p>제가 가장 즐겨한 게임들입니다.</p>
