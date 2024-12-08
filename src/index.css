@@ -9,34 +9,25 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
-  padding-block-start: 0;
-  padding-block-end: 0;
-  padding-inline-start: 0;
-  padding-inline-end: 0;
 }
 
 html {
+  /* 1rem = 10px */
   font-size: 62.5%;
   font-family: "Noto Sans", sans-serif;
   color: var(--font-color);
 }
 
 body {
-  width: 100%;
-  min-height: 100vh;
-
-  background-color: var(--background);
-
-  padding: 6rem 1rem 2rem 1rem;
-
-  font-size: 1.3rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 6rem 1rem 2rem 1rem;
+
+  font-size: 1.2rem;
+  background-color: var(--background);
 }
 
 #root {
@@ -48,14 +39,14 @@ body {
   max-width: 40rem;
 }
 
-a {
-  text-decoration: none;
-  color: var(--font-color);
+a,
+img {
   display: block;
 }
 
-img {
-  display: block;
+a {
+  text-decoration: none;
+  color: var(--font-color);
 }
 
 li {
@@ -64,21 +55,21 @@ li {
 
 button {
   background-color: inherit;
-  color: var(--font-color);
   font: inherit;
+  color: var(--font-color);
 }
 
 /* tablet min 600px */
 @media only screen and (min-width: 37.5rem) {
   body {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 }
 
 /* desktop min 1000px */
 @media only screen and (min-width: 62.5rem) {
   body {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 
     padding-left: 6rem;
     padding-right: 6rem;
@@ -86,6 +77,5 @@ button {
 
   #root {
     max-width: none;
-    width: 100%;
   }
 }

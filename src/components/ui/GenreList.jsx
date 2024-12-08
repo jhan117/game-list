@@ -1,9 +1,10 @@
 import GenreItem from "./GenreItem";
+
 import { genreList } from "../../utils/gameData";
 
-import classes from "./Genre.module.css";
+import classes from "./GenreList.module.css";
 
-const Genre = () => {
+const GenreList = () => {
   return (
     <ul className={classes.genreCon}>
       {genreList.map((g, idx) => (
@@ -13,4 +14,4 @@ const Genre = () => {
   );
 };
 
-export default Genre;
+export default GenreList;

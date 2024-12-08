@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Card from "../components/ui/Card";
+
 import { gamesData } from "../utils/gameData";
 
 import classes from "./MainPage.module.css";
@@ -34,7 +35,7 @@ const MainPage = () => {
       <Header />
       <main className={classes.main}>
         {filteredGames.map((v, idx) => (
-          <Card key={idx} data={v} />
+          <Card key={idx} data={v} isFirst={idx === 0} />
         ))}
       </main>
       <Footer />

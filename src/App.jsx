@@ -1,4 +1,5 @@
 import { Navigate, Routes, Route } from "react-router-dom";
+
 import MainPage from "./pages/MainPage";
 
 const App = () => {

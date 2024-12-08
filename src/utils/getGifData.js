@@ -60,7 +60,7 @@ const getGifData = (game) => {
       return {
         postId: "26413579",
         hoverImgUrl:
-          "https://www.gematsu.com/wp-content/uploads/2024/06/Umamusume-Pretty-Derby-Eng_06-24-24.jpg",
+          "https://external-preview.redd.it/nvyyBD5sbjMbplVsMmgtkLIih7_NRwAL3pwfoF4lpZI.jpg?width=1080&crop=smart&auto=webp&s=d4a129fe7176783c17bbdf2bf9c3016eb07b5090",
         altText: "uma musume",
       };
     default:

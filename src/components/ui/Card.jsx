@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import { FaStar } from "react-icons/fa6";
+import { FaRegStar } from "react-icons/fa6";
+
 import getGifData from "../../utils/getGifData";
 
 import classes from "./Card.module.css";
@@ -22,8 +25,16 @@ const fetchGif = async (postId) => {
   return null;
 };
 
-const Card = ({ data }) => {
-  const { name, developer, genre, releaseDate, website } = data;
+const Card = ({ data, isFirst }) => {
+  const {
+    name,
+    developer,
+    genre,
+    releaseDate,
+    website,
+    interestLevel,
+    reasonForInterest,
+  } = data;
   const [gifUrl, setGifUrl] = useState("");
   const [loading, setLoading] = useState(true);
   const [hovered, setHovered] = useState(false);
@@ -43,7 +54,7 @@ const Card = ({ data }) => {
 
   return (
     <div className={classes.card}>
-      {name === "Valorant" && (
+      {isFirst && (
         <img
           className={classes.secretImg}
           alt="my cute baby"
@@ -61,15 +72,17 @@ const Card = ({ data }) => {
           {loading ? (
             <p>Loading GIF...</p>
           ) : gifUrl ? (
-            <img
-              src={hovered ? gifData.hoverImgUrl : gifUrl}
-              alt={gifData.altText}
-              style={{ width: "100%", aspectRatio: gifData.aspectRatio }}
-            />
+            <>
+              <img
+                src={hovered ? gifData.hoverImgUrl : gifUrl}
+                alt={gifData.altText}
+                style={{ width: "100%", aspectRatio: gifData.aspectRatio }}
+              />
+              <p className={classes.gameName}>{name}</p>
+            </>
           ) : (
             <p>No GIF available for this game.</p>
           )}
-          <p className={classes.gameName}>{name}</p>
         </a>
       </div>
       <ul className={classes.content}>
@@ -84,6 +97,13 @@ const Card = ({ data }) => {
           ))}
         </li>
         <li>출시일: {releaseDate}</li>
+        <li>
+          선호도:{" "}
+          {[...Array(5)].map((_, idx) =>
+            idx < interestLevel ? <FaStar key={idx} /> : <FaRegStar key={idx} />
+          )}
+        </li>
+        <li>선호하는 이유: {reasonForInterest}</li>
       </ul>
     </div>
   );

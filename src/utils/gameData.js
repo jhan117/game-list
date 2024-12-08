@@ -6,6 +6,8 @@ const gamesData = [
     mGenre: "FPS",
     releaseDate: "2020-06-02",
     website: "https://playvalorant.com/ko-kr/",
+    interestLevel: 5,
+    reasonForInterest: "레식 접고 난 후 빠진 게임입니다",
   },
   {
     name: "Rainbow Six Siege",
@@ -14,6 +16,8 @@ const gamesData = [
     mGenre: "FPS",
     releaseDate: "2015-12-01",
     website: "https://www.ubisoft.com/ko-kr/game/rainbow-six/siege",
+    interestLevel: 5,
+    reasonForInterest: "감자 서버였지만 제일 오래했던 게임입니다",
   },
   {
     name: "Minecraft",
@@ -22,6 +26,8 @@ const gamesData = [
     mGenre: "Survival",
     releaseDate: "2011-11-18",
     website: "https://www.minecraft.net/ko-kr",
+    interestLevel: 5,
+    reasonForInterest: "공장 만드는 과정과 모드팩이 재밌습니다",
   },
   {
     name: "Genshin Impact",
@@ -30,6 +36,8 @@ const gamesData = [
     mGenre: "Adventure",
     releaseDate: "2020-09-28",
     website: "https://genshin.hoyoverse.com/ko",
+    interestLevel: 4,
+    reasonForInterest: "스토리가 마음에 들어서 즐겨했습니다",
   },
   {
     name: "Animal Crossing",
@@ -38,6 +46,8 @@ const gamesData = [
     mGenre: "Simulation",
     releaseDate: "2020-03-20",
     website: "https://www.nintendo.co.kr/switch/acbaa/index.html",
+    interestLevel: 3,
+    reasonForInterest: "빚 갚을 때까지는 즐겨했습니다",
   },
   {
     name: "ASTRONEER",
@@ -46,6 +56,8 @@ const gamesData = [
     mGenre: "Survival",
     releaseDate: "2019-02-06",
     website: "https://astroneer.space",
+    interestLevel: 4,
+    reasonForInterest: "최근에 시작한 게임인데 저사양이라 좋습니다",
   },
   {
     name: "It Takes Two",
@@ -54,6 +66,8 @@ const gamesData = [
     mGenre: "Adventure",
     releaseDate: "2021-03-26",
     website: "https://www.ea.com/ko-kr/games/it-takes-two",
+    interestLevel: 4,
+    reasonForInterest: "친구랑 너무 재밌게 했습니다",
   },
   {
     name: "Modern Warfare 2",
@@ -62,6 +76,8 @@ const gamesData = [
     mGenre: "FPS",
     releaseDate: "2022-10-28",
     website: "https://www.callofduty.com/ko/store/games/modernwarfare2",
+    interestLevel: 3,
+    reasonForInterest: "반동 잡기 쉬워서 가볍게 하기 좋습니다",
   },
   {
     name: "Uma Musume",
@@ -70,6 +86,8 @@ const gamesData = [
     mGenre: "Simulation",
     releaseDate: "2022-06-20",
     website: "https://umamusume.kakaogames.com/",
+    interestLevel: 5,
+    reasonForInterest: "키우는 재미도 있고 스토리도 감동적입니다",
   },
 ];
 
