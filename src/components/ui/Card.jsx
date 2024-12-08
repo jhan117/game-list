@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { FaStar } from "react-icons/fa6";
-import { FaRegStar } from "react-icons/fa6";
+
+import Content from "./Content";
 
 import classes from "./Card.module.css";
 
@@ -24,19 +24,11 @@ const fetchGif = async (postId) => {
 };
 
 const Card = ({ data, isFirst }) => {
-  const {
-    name,
-    developer,
-    genre,
-    releaseDate,
-    website,
-    interestLevel,
-    reasonForInterest,
-    gifData,
-  } = data;
   const [gifUrl, setGifUrl] = useState("");
   const [loading, setLoading] = useState(true);
   const [hovered, setHovered] = useState(false);
+
+  const gifData = data.gifData;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,7 +52,7 @@ const Card = ({ data, isFirst }) => {
       )}
       <div className={classes.gifContainer}>
         <a
-          href={website}
+          href={data.website}
           target="_blank"
           rel="noreferrer"
           onMouseEnter={() => setHovered(true)}
@@ -75,33 +67,14 @@ const Card = ({ data, isFirst }) => {
                 alt={gifData.altText}
                 style={{ width: "100%", aspectRatio: gifData.aspectRatio }}
               />
-              <p className={classes.gameName}>{name}</p>
+              <p className={classes.gameName}>{data.name}</p>
             </>
           ) : (
             <p>GIF 없음</p>
           )}
         </a>
       </div>
-      <ul className={classes.content}>
-        <li>개발: {developer}</li>
-        <li>
-          장르:{" "}
-          {genre.map((g, idx) => (
-            <span key={idx}>
-              {g}
-              {idx !== genre.length - 1 && ", "}
-            </span>
-          ))}
-        </li>
-        <li>출시일: {releaseDate}</li>
-        <li>
-          선호도:{" "}
-          {[...Array(5)].map((_, idx) =>
-            idx < interestLevel ? <FaStar key={idx} /> : <FaRegStar key={idx} />
-          )}
-        </li>
-        <li>선호하는 이유: {reasonForInterest}</li>
-      </ul>
+      <Content data={data} />
     </div>
   );
 };
