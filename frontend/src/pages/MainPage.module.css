@@ -1,0 +1,21 @@
+.main {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 4rem;
+  align-items: center;
+}
+
+/* desktop min 1000px */
+@media only screen and (min-width: 62.5rem) {
+  .main {
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 4rem;
+    align-items: normal;
+    flex-wrap: wrap;
+
+    max-width: 144rem;
+  }
+}
