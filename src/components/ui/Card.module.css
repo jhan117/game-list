@@ -4,12 +4,12 @@
   border: 1px solid var(--dark);
   border-radius: 1rem;
 
-  padding: 1.5rem;
+  padding: 1.2rem;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 32.5rem;
+  height: 32.6rem;
 
   position: relative;
 }
@@ -21,6 +21,22 @@
 .gifContainer {
   position: relative;
   width: 100%;
+
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gifContainer a {
+  align-self: flex-start;
+}
+
+.gifContainer img {
+  height: 19rem;
+
+  object-fit: cover;
+  border-radius: 0.6rem;
 }
 
 .gameName {
@@ -40,7 +56,7 @@
 }
 
 .gifContainer a:hover img {
-  transform: scale(1.05);
+  transform: scale(1.02);
   transition: transform 0.3s ease-in-out;
 }
 
@@ -61,6 +77,10 @@
 
   .card {
     height: 35rem;
+  }
+
+  .gifContainer img {
+    height: 21rem;
   }
 }
 

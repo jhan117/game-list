@@ -51,28 +51,26 @@ const Card = ({ data, isFirst }) => {
         />
       )}
       <div className={classes.gifContainer}>
-        <a
-          href={data.website}
-          target="_blank"
-          rel="noreferrer"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-        >
-          {loading ? (
-            <p>GIF 로딩중...</p>
-          ) : gifUrl ? (
-            <>
-              <img
-                src={hovered ? gifData.hoverImgUrl : gifUrl}
-                alt={gifData.altText}
-                style={{ width: "100%", aspectRatio: gifData.aspectRatio }}
-              />
-              <p className={classes.gameName}>{data.name}</p>
-            </>
-          ) : (
-            <p>GIF 없음</p>
-          )}
-        </a>
+        {loading ? (
+          <p>GIF 로딩중...</p>
+        ) : gifUrl ? (
+          <a
+            href={data.website}
+            target="_blank"
+            rel="noreferrer"
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+          >
+            <img
+              src={hovered ? gifData.hoverImgUrl : gifUrl}
+              alt={gifData.altText}
+              style={{ width: "100%", aspectRatio: gifData.aspectRatio }}
+            />
+            <p className={classes.gameName}>{data.name}</p>
+          </a>
+        ) : (
+          <p>GIF 없음</p>
+        )}
       </div>
       <Content data={data} />
     </div>
