@@ -64,3 +64,5 @@ out/
 
 ### Kotlin ###
 .kotlin
+
+mongodb-connection.properties
