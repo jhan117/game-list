@@ -4,7 +4,7 @@ import kr.ac.kumoh.ce.s20240058.backend.model.Game
 import kr.ac.kumoh.ce.s20240058.backend.service.GameService
 import org.springframework.web.bind.annotation.*
 
-@CrossOrigin(origins = ["http://localhost:3000", "https://kaye-game.netlify.app"])
+@CrossOrigin(origins = ["https://kaye-game.netlify.app", "http://localhost:3000"])
 @RestController
 @RequestMapping("/api/games")
 class GameController (private val gameService: GameService) {
