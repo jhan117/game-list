@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/gif_data")
-@CrossOrigin(origins = ["http://localhost:3000", "https://kaye-game.netlify.app"])
 class GifDataController(private val gifDataService: GifDataService) {
     @GetMapping("/name/{name}")
     fun getByName(@PathVariable name: String): GifData = gifDataService.getByName(name)
