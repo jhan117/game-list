@@ -1,10 +1,10 @@
 import GenreItem from "./GenreItem";
 
-import { genreList } from "../../utils/gameData";
-
 import classes from "./GenreList.module.css";
 
 const GenreList = () => {
+  const genreList = ["All", "FPS", "Adventure", "Survival", "Simulation"];
+
   return (
     <ul className={classes.genreCon}>
       {genreList.map((g, idx) => (

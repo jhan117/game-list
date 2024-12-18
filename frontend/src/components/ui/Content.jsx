@@ -7,10 +7,10 @@ const Content = ({ data }) => {
       <li>개발: {data.developer}</li>
       <li>
         장르:{" "}
-        {data.genre.map((g, idx) => (
+        {data.genres.map((g, idx) => (
           <span key={idx}>
             {g}
-            {idx !== data.genre.length - 1 && ", "}
+            {idx !== data.genres.length - 1 && ", "}
           </span>
         ))}
       </li>
