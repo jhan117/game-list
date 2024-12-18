@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/games")
-@CrossOrigin(origins = ["http://localhost:3000"])
+@CrossOrigin(origins = ["http://localhost:3000", "https://kaye-game.netlify.app"])
 class GameController (private val gameService: GameService) {
     @GetMapping
     fun getAllGames(): List<Game> = gameService.getAllGames()
