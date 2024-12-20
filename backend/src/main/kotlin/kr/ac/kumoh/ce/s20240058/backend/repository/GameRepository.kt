@@ -5,4 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository
 
 interface GameRepository: MongoRepository<Game, String> {
     fun findByGenre(genre: String): List<Game>
+    fun findByName(name: String): Game
 }

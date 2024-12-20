@@ -2,6 +2,7 @@ package kr.ac.kumoh.ce.s20240058.backend.model
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
+import org.springframework.data.mongodb.core.mapping.Field
 
 @Document(collection = "games")
 data class Game(
@@ -15,4 +16,7 @@ data class Game(
     val website: String,
     val interestLevel: Int,
     val reasonForInterest: String,
+
+    @Field("gifData")
+    var gifData: GifData? = null,
 )
