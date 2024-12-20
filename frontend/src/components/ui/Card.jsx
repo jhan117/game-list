@@ -40,8 +40,9 @@ const Card = ({ data, isFirst }) => {
       }
     } catch (error) {
       console.error("Error fetching GIF:", error);
+    } finally {
+      setLoading(false);
     }
-    return null;
   };
 
   useEffect(() => {
