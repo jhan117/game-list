@@ -22,7 +22,7 @@
   position: relative;
   width: 100%;
 
-  height: 100%;
+  height: 19rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,7 +32,8 @@
   align-self: flex-start;
 }
 
-.gifContainer img {
+.gif {
+  width: 100%;
   height: 19rem;
 
   object-fit: cover;
@@ -79,7 +80,8 @@
     height: 35rem;
   }
 
-  .gifContainer img {
+  .gifContainer,
+  .gif {
     height: 21rem;
   }
 }

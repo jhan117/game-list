@@ -1,6 +1,8 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 import Content from "./Content";
+import Skeleton from "react-loading-skeleton";
+import useSkeletonColors from "../../hooks/useSkeletonColors";
 
 import classes from "./Card.module.css";
 
@@ -8,11 +10,21 @@ const Card = ({ data, isFirst }) => {
   const [gifUrl, setGifUrl] = useState("");
   const [loading, setLoading] = useState(true);
   const [hovered, setHovered] = useState(false);
-  const [gifData, setGifData] = useState();
+  const { baseColor, highlightColor } = useSkeletonColors();
+
+  const gifData = data.gifData;
+
+  const capitalize = (str) => {
+    return str
+      .split(" ")
+      .map((w) => w[0].toUpperCase() + w.slice(1))
+      .join(" ");
+  };
 
   const fetchGif = async (postId) => {
     if (!postId) return null;
 
+    setLoading(true);
     try {
       const apiKey = process.env.REACT_APP_TENOR_API_KEY;
       const response = await fetch(
@@ -21,7 +33,10 @@ const Card = ({ data, isFirst }) => {
       const data = await response.json();
 
       if (data.results && data.results.length > 0) {
-        return data.results[0].media_formats.gif.url;
+        const gif = data.results[0].media_formats.gif.url;
+
+        setGifUrl(gif);
+        setLoading(false);
       }
     } catch (error) {
       console.error("Error fetching GIF:", error);
@@ -29,32 +44,9 @@ const Card = ({ data, isFirst }) => {
     return null;
   };
 
-  const getGifData = useCallback(async (name) => {
-    const apiURL = process.env.REACT_APP_GIF_API_URL + `/name/${name}`;
-
-    try {
-      const response = await fetch(apiURL);
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const data = await response.json();
-      setGifData(data);
-
-      setLoading(true);
-      const gif = await fetchGif(data.postId);
-      setGifUrl(gif);
-    } catch (error) {
-      console.error("Error fetching data: ", error);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
   useEffect(() => {
-    getGifData(data.name);
-  }, [data.name, getGifData]);
+    fetchGif(gifData.postId);
+  }, [gifData.postId]);
 
   return (
     <div className={classes.card}>
@@ -67,7 +59,13 @@ const Card = ({ data, isFirst }) => {
       )}
       <div className={classes.gifContainer}>
         {loading ? (
-          <p>GIF 로딩중...</p>
+          <div style={{ width: "100%" }}>
+            <Skeleton
+              className={classes.gif}
+              baseColor={baseColor}
+              highlightColor={highlightColor}
+            />
+          </div>
         ) : gifUrl ? (
           <a
             href={data.website}
@@ -79,12 +77,12 @@ const Card = ({ data, isFirst }) => {
             <img
               src={hovered ? gifData.hoverImgUrl : gifUrl}
               alt={gifData.altText}
-              style={{ width: "100%" }}
+              className={classes.gif}
             />
-            <p className={classes.gameName}>{data.name}</p>
+            <p className={classes.gameName}>{capitalize(data.name)}</p>
           </a>
         ) : (
-          <p>GIF 없음</p>
+          <p>Gif 없음</p>
         )}
       </div>
       <Content data={data} />
