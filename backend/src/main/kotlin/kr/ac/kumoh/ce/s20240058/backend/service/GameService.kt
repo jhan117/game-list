@@ -46,12 +46,14 @@ class GameService(
 
         games.forEach { game ->
             // Fetch corresponding GIF data
-            val gifData = gifDataRepository.findByName(game.name)
+            if (game.name != null) {
+                val gifData = gifDataRepository.findByName(game.name)
 
-            // If GIF data exists, update the game object
-            if (gifData != null) {
-                game.gifData = gifData
-                gameRepository.save(game)
+                // If GIF data exists, update the game object
+                if (gifData != null) {
+                    game.gifData = gifData
+                    gameRepository.save(game)
+                }
             }
         }
     }
