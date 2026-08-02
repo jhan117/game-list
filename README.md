@@ -29,6 +29,9 @@
     - Java 21 LTS 안정 버전 환경 구축(그냥 컴퓨터에 이것밖에 없어서 새로 깔기 귀찮았다)
   - 빌드 및 개발 환경 마이그레이션
     - CRA(Create React App)에서 Vite 6로 마이그레이션하여 빌드 속도 향상
+    - Render Docker Multi-stage 빌드 환경 구축
+      - 기존 수동 `app.jar` 배포 방식을 폐기하고, Render 서버에서 최신 Kotlin 코드를 자동 빌드(`gradlew build`)하도록 Dockerfile 멀티스테이지 구조 적용
+      - 내가 이거 때문에 시간 낭비를 많이 했다... ㅠ(매번 까먹어서)
 
 - Swagger API 자동 문서화 & Postman 연동
   - Swagger UI (웹 문서): `http://localhost:8080/swagger-ui.html` 에서 모든 API 직접 테스트 가능
