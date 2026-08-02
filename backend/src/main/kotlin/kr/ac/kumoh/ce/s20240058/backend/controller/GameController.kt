@@ -1,11 +1,11 @@
 package kr.ac.kumoh.ce.s20240058.backend.controller
 
+import kr.ac.kumoh.ce.s20240058.backend.dto.PatchGameRequest
 import kr.ac.kumoh.ce.s20240058.backend.model.Game
 import kr.ac.kumoh.ce.s20240058.backend.service.GameService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-@CrossOrigin(origins = ["https://kaye-game.netlify.app", "http://localhost:3000"])
 @RestController
 @RequestMapping("/api/games")
 class GameController(private val gameService: GameService) {
@@ -57,5 +57,14 @@ class GameController(private val gameService: GameService) {
     fun updateAllGamesGifData(): ResponseEntity<Void> {
         gameService.updateAllGamesWithGifData()
         return ResponseEntity.ok().build()
+    }
+
+    @PatchMapping("/name/{name}")
+    fun patchGameByName(
+        @PathVariable name: String,
+        @RequestBody request: PatchGameRequest
+    ): ResponseEntity<Game> {
+        val updated = gameService.patchGameByName(name, request)
+        return ResponseEntity.ok(updated)
     }
 }
